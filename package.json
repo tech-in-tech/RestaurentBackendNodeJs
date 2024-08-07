@@ -1,0 +1,20 @@
+{
+  "name": "restaurantbackendnodejs",
+  "version": "1.0.0",
+  "description": "Creating Restaurant backend using NodeJS",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon server.js"
+  },
+  "author": "Anubhav Sharma",
+  "license": "ISC",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "gitignore": "^0.7.0",
+    "morgan": "^1.10.0"
+  }
+}
