@@ -1,18 +1,12 @@
 //! - - - - - - - - - - - - - - - - - - - Import packages  - - - - - - - - - - - - - - - - -
-// Import express
 const express = require('express');
-// Import CORS
 const cors = require("cors");
-// Import colors
 const colors = require('colors');
-// Import morgan
 const morgan = require('morgan');
-// Rest object
 const app = express();
-// .env
 const dotenv = require('dotenv');
-// config .env
-dotenv.config()
+require('dotenv').config();
+const db = require('./config/db');
 //! - - - - - - - - - - - - - - - - - - - Middlewars  - - - - - - - - - - - - - - - - - - -
 
 // Middleware for cross origin error
@@ -28,6 +22,8 @@ app.use(morgan('dev'));
 
 // route
 // URL => http://localhost:8080
+app.use('/api/v1/test',require('./routes/testRoutes'))
+
 app.get('/',(req,res)=>{
   return res.status(200).json("Welcon to food server");
 }) 
