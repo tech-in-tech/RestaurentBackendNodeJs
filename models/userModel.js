@@ -2,38 +2,42 @@ const mongoose = require('mongoose');
 
 // schema
 const userSchema = new mongoose.Schema({
-  userName:{
+  userName: {
     type: String,
-    required:[true,'User Name is required']
+    required: [true, 'User Name is required']
   },
-  email:{
-    type:String,
-    required:[true,'Email is required'],
-    unique:true
+  email: {
+    type: String,
+    required: [true, 'Email is required'],
+    unique: true
   },
-  password:{
-    type:String,
-    required:[true,'password is required']
+  password: {
+    type: String,
+    required: [true, 'password is required']
   },
-  address:{
-    type:Array,
+  address: {
+    type: Array,
   },
-  phone:{
-    type:String,
-    required:[true,'Phone number is required'],
+  phone: {
+    type: String,
+    required: [true, 'Phone number is required'],
   },
-  userType:{
-    type:String,
-    required:[true,'Usertype is required'],
-    default:'clinet',
-    enum:['clinet','admin','vendor','driver']
+  userType: {
+    type: String,
+    required: [true, 'Usertype is required'],
+    default: 'clinet',
+    enum: ['clinet', 'admin', 'vendor', 'driver']
   },
-  profile:{
-    type:String,
-    default:'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'
+  profile: {
+    type: String,
+    default: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'
+  },
+  answer: {
+    type: String,
+    required: [true, 'Answer is required']
   }
   // timestamps : tells when user created and updated
-},{timestamps:true})
+}, { timestamps: true })
 
 // export
-module.exports = mongoose.model("User",userSchema);
+module.exports = mongoose.model("User", userSchema);

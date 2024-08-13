@@ -4,9 +4,9 @@ const JWT = require('jsonwebtoken')
 // REGISTER
 const registerController = async (req, res) => {
   try {
-    const { userName, email, password, phone, address } = req.body
+    const { userName, email, password, phone, address, answer } = req.body
     // Validation to check the above data is provided or not
-    if (!userName || !email || !password || !phone || !address) {
+    if (!userName || !email || !password || !phone || !address || !answer) {
       return res.status(500).send({
         success: false,
         message: "Please Provide all fields"
@@ -22,9 +22,16 @@ const registerController = async (req, res) => {
     }
     // Hashing password
     let salt = bcrypt.genSaltSync(10);
-    const hashedPassword = await bcrypt.hash(password,salt)
+    const hashedPassword = await bcrypt.hash(password, salt)
     // creating new User
-    const user = await userModel.create({ userName, email, password:hashedPassword, phone, address })
+    const user = await userModel.create({
+      userName,
+      email,
+      password: hashedPassword,
+      phone,
+      address,
+      answer
+    })
     res.status(201).send({
       success: true,
       message: "Successfully Register",
@@ -52,7 +59,7 @@ const loginController = async (req, res) => {
       })
     }
     // Cheak User
-    const user = await userModel.findOne({ email})
+    const user = await userModel.findOne({ email })
     // Validation
     if (!user) {
       return res.status(404).send({
@@ -61,15 +68,15 @@ const loginController = async (req, res) => {
       })
     }
     // Check user password || compare password 
-    const isMatch = await bcrypt.compare(password,user.password)
-    if(!isMatch){
+    const isMatch = await bcrypt.compare(password, user.password)
+    if (!isMatch) {
       return res.status(500).send({
         success: false,
-        message:"Invalid Password",
+        message: "Invalid Password",
       });
     }
-    const token = JWT.sign({id:user._id},process.env.JWT_SECRET,{
-      expiresIn:"7D"
+    const token = JWT.sign({ id: user._id }, process.env.JWT_SECRET, {
+      expiresIn: "7D"
     })
     res.status(200).send({
       success: true,
