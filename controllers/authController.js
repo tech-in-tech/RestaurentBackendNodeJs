@@ -76,7 +76,7 @@ const loginController = async (req, res) => {
       });
     }
     const token = JWT.sign({ id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: "7D"
+      expiresIn: "10D"
     })
     res.status(200).send({
       success: true,
