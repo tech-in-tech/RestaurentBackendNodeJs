@@ -39,3 +39,21 @@ const PORT  = process.env.PORT || 8080;
 app.listen(PORT,()=>{
   console.log(`Server running on PORT : ${PORT}`.bgCyan);
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// PORT = 8080
+// MONGO_URL = mongodb+srv://anubhavsharma06dec:BNTEwV90SpqUxC67@cluster0.hdkkc.mongodb.net/food-app
+// # MONGO_URL = mongodb://localhost:27017/food-app
+// JWT_SECRET = $9^1$0+!*+7%g_k-ERc/*&83$5
